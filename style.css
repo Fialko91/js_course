@@ -12,3 +12,15 @@
 .nav li {
     list-style-type: none;
 }
+
+table {
+    border: 1px solid black;
+}
+td {
+    padding: 4px;
+    border: 1px solid black;
+}
+hr {
+    background-color: black;
+    width: 100%;
+}

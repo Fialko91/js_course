@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_03.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 03</h1>
+    <p>
+        Вивести таблицю з одним рядком і  7 стовпцями.
+    </p>
+    <img src="../../img/example_1.png" alt="example">
+
+    <p>Відповідь</p>
+    <script>
+        if(confirm('Почати тестування?')) {
+            document.write (`<table><tr>`)
+            for (let i = 1; i <= 7; i++) {
+                document.write(`<td>${i}</td>`)
+            }
+            document.write (`</tr></table>`)
+        }
+    </script>
+
+</body>
+</html>

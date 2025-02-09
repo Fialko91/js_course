@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 02</h1>
+    <p>
+        Створити 10 елементів для введення цін продуктів
+    </p>
+
+    <p>Відповідь</p>
+    <script>
+        if(confirm('Почати тестування?')) {
+            for (let i = 0; i < 10; i++) {
+                document.write(`
+                    <div>
+                        <label>
+                           product #${i}
+                          <input type="text" >
+                        </label>
+                    </div>
+                `)
+            }
+        }
+    </script>
+</body>
+</html>

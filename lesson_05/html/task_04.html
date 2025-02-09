@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_04.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 04</h1>
+    <p>
+        Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком
+    </p>
+    <img src="../../img/example_2.png" alt="example">
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            document.write (`<table>`)
+            for (let i = 1; i <= 3; i++) {
+                document.write(`<tr>`)
+                for (let j = 1; j <= 7; j++) {
+                    document.write(`<td>${j}</td>`)
+                }
+                document.write(`</tr>`)
+            }
+            document.write (`</table>`)
+
+        }
+    </script>
+</body>
+</html>
