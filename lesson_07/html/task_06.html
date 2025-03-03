@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 04</h1>
+    <p>
+        Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+    </p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const getNumber1 = parseInt(prompt('Введіть кількусть рядків в таблиці'));
+            const getNumber2 = parseInt(prompt('Введіть кількусть стовпців в таблиці'));
+
+            function createTable(row, col) {
+                document.write(`<table>`);
+                let mess = "фіксоване повідомлення";
+                for (let tr = 1; tr <= row; tr++) {
+                    document.write(`<tr>`);
+                    for (let td = 1; td <= col; td++) {
+                        document.write(`<td>${mess}</td>`);
+                    }
+                    document.write(`</tr>`);
+                }
+                document.write(`</table>`);
+            }
+            createTable(getNumber1, getNumber2);
+        }
+    </script>
+</body>
+</html>

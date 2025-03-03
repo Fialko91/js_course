@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_03.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 3</h1>
+    <p>
+        Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+    </p>
+    <ul>
+        <li>починаються на букву «А»</li>
+        <li>перша і остання літери співпадають;</li>
+        <li>складаються з більше ніш 5 символів;</li>
+    </ul>
+
+    <p>Відповідь</p>
+
+    <script>
+        if(confirm('Почати тестування?')) {
+            const carNumber = ["АА9728АА", "АМ3678СТ", "ИТ7814АС", "АБ1578БА", "РИ12", "АМ8Т"]
+
+
+            function getFirstLetter(arr) {
+                let res = 0
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].charAt(0) === 'А') res++
+                }
+                return res
+            }
+            
+            function getFirstAndLastLetter(arr) {
+                let res = 0
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].charAt(0) === arr[i].charAt(arr[i].length - 1)) res++
+                }
+                return res
+            }
+
+            function getMaxLetter(arr) {
+                let res = 0
+                for ( let i = 0; i < arr.length; i++) {
+                    if ( arr[i].length > 5) res++
+                }
+                return res
+            }
+
+            document.write(`<p>Кількість номерів, які починаються на букву «А»: ${getFirstLetter(carNumber)}</p>`)
+            document.write(`<p>Кількість номерів, перша і остання літери співпадають: ${getFirstAndLastLetter(carNumber)}</p>`)
+            document.write(`<p>Кількість номерів, які складаються з більше ніш 5 символів: ${getMaxLetter(carNumber)}</p>`)
+        }
+
+    </script>
+
+</body>
+</html>

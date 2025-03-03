@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_03.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 03</h1>
+    <p>
+        Задача 3. Створити окремі функції, які для 4 чисел знаходять:
+    </p>
+    <p>1)суму;</p>
+    <p>2)добуток;</p>
+    <p>3)середнє арифметичне;</p>
+    <p>4)мінімальне значення.</p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if(confirm('Почати тестування?')) {
+            const getNumber1 = parseInt(prompt('Введіть перще число'))
+            const getNumber2 = parseInt(prompt('Введіть друге число'))
+            const getNumber3 = parseInt(prompt('Введіть третє число'))
+            const getNumber4 = parseInt(prompt('Введіть четверте число'))
+
+            function getAmount(num1, num2, num3, num4) {
+                console.log(num1 + num2 + num3 + num4)
+                return num1 + num2 + num3 + num4;
+            }
+
+            function getProduct(num1, num2, num3, num4) {
+                return num1 * num2 * num3 * num4;
+            }
+
+            function getArithmeticMean(num1, num2, num3, num4) {
+                return (num1 + num2 + num3 + num4) / 4;
+            }
+
+            function getMinValue(num1, num2, num3, num4) {
+                return Math.min(num1, num2, num3, num4);
+            }
+
+
+            document.write( `сума = ${getAmount(getNumber1, getNumber2, getNumber3, getNumber4)} <br>`);
+            document.write( `добуток = ${getProduct(getNumber1, getNumber2, getNumber3, getNumber4)} <br>`);
+            document.write( `середнє арифметичне = ${getArithmeticMean(getNumber1, getNumber2, getNumber3, getNumber4)} <br>`);
+            document.write( `мінімальне значення = ${getMinValue(getNumber1, getNumber2, getNumber3, getNumber4)} <br>`);
+        }
+
+    </script>
+
+</body>
+</html>

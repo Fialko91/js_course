@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 2</h1>
+    <p>
+        Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
+    </p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+
+            const names = ['Іван', 'Дмитро', 'Іван', 'Олена', 'Степан', 'Іван']
+            
+            function foundName(arr) {
+                let count = 0;
+
+                for (let i = 0; i < arr.length; i ++) {
+                    if ( arr[i] === 'Іван' ) count++
+                }
+                return count
+            }
+            document.write(`<p>Ім"я Іван у списку: ${foundName(names)} разів</p>`)
+        }
+    </script>
+</body>
+</html>

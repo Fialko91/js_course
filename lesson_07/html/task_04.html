@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_04.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 04</h1>
+    <p>
+        Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів:
+        кількість парних, кількість додатних, кількість більших за 100.
+    </p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const getNumber1 = parseInt(prompt('Введіть перще число'))
+            const getNumber2 = parseInt(prompt('Введіть друге число'))
+            const getNumber3 = parseInt(prompt('Введіть третє число'))
+            
+            function getConvertNumber(num1, num2, num3) {
+                let evenCounter = 0;
+                if (num1 % 2 === 0) evenCounter++;
+                if (num2 % 2 === 0) evenCounter++;
+                if (num3 % 2 === 0) evenCounter++;
+                let positiveCounter = 0;
+                if (num1 > 0) positiveCounter++;
+                if (num2 > 0) positiveCounter++;
+                if (num3 > 0) positiveCounter++;
+                let greater100Counter = 0;
+                if (num1 > 100) greater100Counter++;
+                if (num2 > 100) greater100Counter++;
+                if (num3 > 100) greater100Counter++;
+
+                return `
+                  Kiлькiсть парних чисел: ${evenCounter}<br>
+                  Kiлькiсть додатних чисел: ${positiveCounter}<br>
+                  Kiлькiсть чисел більших за 100: ${greater100Counter}
+                  `;
+            }
+
+            document.write(`${getConvertNumber(getNumber1, getNumber2, getNumber3)}`)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 05</h1>
+    <p>
+        Створити окремі функції, які переводять:
+    </p>
+    <p>Сантиметри у дюйми;</p>
+    <p>Кілограми у фунти;</p>
+    <p>Кілометри у милі</p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const getNumber1 = parseInt(prompt('Введіть кількусть см які хочете конвертувати в дюйми'))
+            const getNumber2 = parseInt(prompt('Введіть кількусть кг які хочете конвертувати в фунти'))
+            const getNumber3 = parseInt(prompt('Введіть кількусть км які хочете конвертувати в милі'))
+            
+            function CentimetersToInches(num) {
+                return (num * 0.3937).toFixed(5);
+            }
+
+            function KgToPounds(num) {
+                return (num * 2.20462).toFixed(5);
+            }
+
+            function KmToMiles(num) {
+                return (num * 0.62137).toFixed(5);
+            }
+
+            document.write(`
+                Сантиметри у дюйми = ${CentimetersToInches(getNumber1)} <br>
+                Кілограми у фунти = ${KgToPounds(getNumber2)} <br>
+                Кілометри у милі = ${KmToMiles(getNumber3)} <br>
+            `)
+        }
+    </script>
+</body>
+</html>
