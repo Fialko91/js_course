@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 7</h1>
+    <p>
+        Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»
+    </p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+
+            const carNumber = ["АА9728АА", "АМ3678СТ", "ИТ7814АС", "АБ1578БА", "РИ12", "АМ8Т"]
+            const result = carNumber.filter(el => el.charCodeAt(0) === 1040 )
+
+            document.write(`Old = ${carNumber} <br>`)
+            document.write(`New = ${result}`)
+
+        }
+    </script>
+</body>
+</html>

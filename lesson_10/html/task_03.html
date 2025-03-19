@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_03.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 3</h1>
+    <p>
+        Дано масив елементів. Вивести на екран елементи, що більші за 100
+    </p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if(confirm('Почати тестування?')) {
+            const array = Array.from({ length: 30 }, () => Math.floor(Math.random() * 150) + 1);
+            let result = []
+
+            for (let el of array) {
+                if (el >= 100) result.push(el)
+            }
+
+            document.write(`<p>${result}</p>`)
+        }
+
+    </script>
+
+</body>
+</html>

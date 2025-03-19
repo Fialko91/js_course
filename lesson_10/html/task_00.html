@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 00</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_00.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 00</h1>
+    <p>
+        Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів заповнених нулями.
+    </p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const el = parseInt(prompt('Введіть кількість єлементів'))
+
+            const arr = new Array(el)
+            arr.fill(0)
+
+            document.write(`Ваш результат: ${arr}`)
+        }
+    </script>
+</body>
+</html>

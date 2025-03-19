@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 5</h1>
+    <p>
+        Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+    </p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const array = [3, 4, 5, 11, 7, 8, 4, 1];
+
+            function getArr(arrEl) {
+                arrEl.forEach((element,index, arr) => {
+                    if(arr[0] < element) arr[index] = element*2
+                });
+                return array
+            }
+
+            document.write(`${getArr(array)}`)
+        }
+    </script>
+</body>
+</html>

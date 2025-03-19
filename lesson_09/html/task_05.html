@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_04.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 4</h1>
+    <p>
+        Дано масив елементів. Знайти добуток додатних елементів
+    </p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const array = [3, 2, 5, 11, 7, 8, 4, 1];
+            const result = array.reduce((acc, el) => acc * el, 1)
+
+            document.write(`<p>${result}</p>`)
+        }
+    </script>
+</body>
+</html>

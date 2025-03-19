@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 00</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_00.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 00</h1>
+    <p>
+        Дано масив, який містить оцінки з К предметів.
+        Знайти середній бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник (має хоча би одну двійку),
+        хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+    </p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+
+            const marks = [5, 2, 5, 3, 5, 5, 3, 1]
+            let catResult = ''
+            function getAvgMarks(array) {
+                let sum = 0
+
+                for (let i = 0; i < array.length; i++) {
+                    sum += array[i]
+                }
+                return sum / array.length
+            }
+            const aver = getAvgMarks(marks)
+
+            document.write(`<p>Середня оцінка учня: ${aver.toFixed()}</p>`)
+
+            switch (aver.toFixed()) {
+                case '1':
+                case '2':
+                    catResult = 'Двійочник '
+                    break;
+                case '3':
+                    catResult = 'Трійочник'
+                    break;
+                case '4':
+                    catResult = 'Хорошист'
+                    break;
+                case '5':
+                    catResult = 'Відмінник'
+                    break;
+            }
+            document.write(`<p>Учень являєтся: ${catResult}</p>`)
+        }
+    </script>
+</body>
+</html>

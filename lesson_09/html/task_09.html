@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 8</h1>
+    <p>
+        Дано масив імен. Сформувати масив з перших літер цих імен.
+    </p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const names = ['Іван', 'Дмитро', 'Іван', 'Олена', 'Степан', 'Іван']
+            const result = names.map(el => el[0])
+
+            document.write(`Old = ${names} <br>`)
+            document.write(`New = ${result}`)
+        }
+    </script>
+</body>
+</html>
