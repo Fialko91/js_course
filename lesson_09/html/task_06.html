@@ -8,25 +8,20 @@
 <body>
     <a href="../index.html">Home page</a>
 
-    <h1>Завдання 5</h1>
+    <h1>Завдання 6</h1>
     <p>
-        Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+        Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
     </p>
 
     <p>Відповідь</p>
 
     <script>
         if (confirm('Почати тестування?')) {
-            const array = [3, 4, 5, 11, 7, 8, 4, 1];
+            const array = [300, 400, 500, 1100, 700, 1800, 40, 1000, 1250];
+            const result = array.filter(el => el >= 1000).map(el => el *= 0.7)
 
-            function getArr(arrEl) {
-                arrEl.forEach((element,index, arr) => {
-                    if(arr[0] < element) arr[index] = element*2
-                });
-                return array
-            }
+            document.write(`${result}`)
 
-            document.write(`${getArr(array)}`)
         }
     </script>
 </body>

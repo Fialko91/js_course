@@ -11,60 +11,21 @@
 
     <h1>Завдання 4</h1>
     <p>
-        Дано послідовність оцінок учня. Підрахувати кількість:
+        Дано масив елементів. Знайти добуток додатних елементів
     </p>
-    <ul>
-        <li>двійок</li>
-        <li>кількість хороших оцінок (добре, відмінно);</li>
-        <li>кількість оцінок, які нижче середнього.</li>
-    </ul>
 
     <p>Відповідь</p>
 
     <script>
         if (confirm('Почати тестування?')) {
+            const array = [3, 2, 5, 11, 7, 8, 4, 1];
+            let result = 1
 
-            const marks = [5, 2, 3, 1, 4, 2, 2, 4, 5]
-
-            function getBadCount(arr) {
-                let res = 0
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i] === 2) res++
-                }
-                return res
+            for (let el of array) {
+                result *= el
             }
 
-            function getGoodCount(arr) {
-                let res = 0
-                for ( let i = 0; i < arr.length; i++) {
-                    if (arr[i] === 4) res++
-                    if (arr[i] === 5) res++
-                }
-                return res
-            }
-
-            function getAvgMarks(arr) {
-                let res = 0
-                for ( let i = 0; i < arr.length; i++) {
-                    res += arr[i]
-                }
-               let avg = res / arr.length
-                return avg
-            }
-
-            let avgMark = getAvgMarks(marks).toFixed()
-
-            function getLessAvg(arr) {
-                let res = 0
-                for ( let i = 0; i < arr.length; i++) {
-                    if (arr[i] < avgMark) res++
-                }
-                return res
-            }
-
-            document.write(`<p">Кількість двійок: ${getBadCount(marks)}</p>`)
-            document.write(`<p">Кількість хороших оцінок (добре, відмінно): ${getGoodCount(marks)}</p>`)
-            document.write(`<p">Кількість оцінок, які нижче середнього: ${getLessAvg(marks)}</p>`)
+            document.write(`<p>${result}</p>`)
         }
     </script>
 </body>

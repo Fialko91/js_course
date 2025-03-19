@@ -11,48 +11,21 @@
 
     <h1>Завдання 3</h1>
     <p>
-        Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+        Дано масив елементів. Вивести на екран елементи, що більші за 100
     </p>
-    <ul>
-        <li>починаються на букву «А»</li>
-        <li>перша і остання літери співпадають;</li>
-        <li>складаються з більше ніш 5 символів;</li>
-    </ul>
 
     <p>Відповідь</p>
 
     <script>
         if(confirm('Почати тестування?')) {
-            const carNumber = ["АА9728АА", "АМ3678СТ", "ИТ7814АС", "АБ1578БА", "РИ12", "АМ8Т"]
+            const array = Array.from({ length: 30 }, () => Math.floor(Math.random() * 150) + 1);
+            let result = []
 
-
-            function getFirstLetter(arr) {
-                let res = 0
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i].charAt(0) === 'А') res++
-                }
-                return res
-            }
-            
-            function getFirstAndLastLetter(arr) {
-                let res = 0
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i].charAt(0) === arr[i].charAt(arr[i].length - 1)) res++
-                }
-                return res
+            for (let el of array) {
+                if (el >= 100) result.push(el)
             }
 
-            function getMaxLetter(arr) {
-                let res = 0
-                for ( let i = 0; i < arr.length; i++) {
-                    if ( arr[i].length > 5) res++
-                }
-                return res
-            }
-
-            document.write(`<p>Кількість номерів, які починаються на букву «А»: ${getFirstLetter(carNumber)}</p>`)
-            document.write(`<p>Кількість номерів, перша і остання літери співпадають: ${getFirstAndLastLetter(carNumber)}</p>`)
-            document.write(`<p>Кількість номерів, які складаються з більше ніш 5 символів: ${getMaxLetter(carNumber)}</p>`)
+            document.write(`<p>${result}</p>`)
         }
 
     </script>

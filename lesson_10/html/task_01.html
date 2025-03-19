@@ -11,23 +11,21 @@
 
     <h1>Завдання 1</h1>
     <p>
-        Користувач вводить кількість елементів.
-        Створити масив, у якому перша половина заповнена 1-цями, а друга заповнена 7-ками.
+        Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
     </p>
 
     <p>Відповідь</p>
     <script>
         if (confirm('Почати тестування?')) {
-            const el = parseInt(prompt('Введіть кількість єлементів'))
+            const array = Array.from({ length: 20 }, () => Math.floor(Math.random() * 1300) + 1);
+            const result = []
 
-            function getArr(arr) {
-                let userArray = new Array(arr)
-                let halfArray = Math.floor(arr / 2)
-                userArray.fill(1, 0, halfArray)
-                userArray.fill(7, halfArray, arr)
-                return userArray
-            }
-            document.write(`<p>${getArr(el)}</p>`)
+            array.map((el, ind) => {
+                if (el >= 1000) result.push(ind)
+            })
+
+            document.write(`<p>Згенерований массив:${array}</p>`)
+            document.write(`<p>Результат:${result}</p>`)
         }
     </script>
 

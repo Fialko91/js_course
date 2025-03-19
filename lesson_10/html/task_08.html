@@ -10,18 +10,18 @@
 
     <h1>Завдання 8</h1>
     <p>
-        Дано масив імен. Сформувати масив з перших літер цих імен.
+        Підрахувати суму цін, що більше за 1000
     </p>
 
     <p>Відповідь</p>
 
     <script>
         if (confirm('Почати тестування?')) {
-            const names = ['Іван', 'Дмитро', 'Іван', 'Олена', 'Степан', 'Іван']
-            const result = names.map(el => el[0])
+            const array = Array.from({ length: 20 }, () => Math.floor(Math.random() * 1500) + 1);
+            let result = array.filter(el => el >= 1000).reduce((acc, el) => acc + el)
 
-            document.write(`Old = ${names} <br>`)
-            document.write(`New = ${result}`)
+            document.write(`<p>Згенерований массив: ${array}</p>`)
+            document.write(`<p>Результат: ${result}</p>`)
         }
     </script>
 </body>

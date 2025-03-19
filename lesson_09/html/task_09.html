@@ -8,20 +8,19 @@
 <body>
     <a href="../index.html">Home page</a>
 
-    <h1>Завдання 8</h1>
+    <h1>Завдання 9</h1>
     <p>
-        Дано масив імен. Сформувати масив з перших літер цих імен.
+        Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.
     </p>
 
     <p>Відповідь</p>
 
     <script>
         if (confirm('Почати тестування?')) {
-            const names = ['Іван', 'Дмитро', 'Іван', 'Олена', 'Степан', 'Іван']
-            const result = names.map(el => el[0])
+            const array = [300, 400, 500, 1100, 700, 1800, 40, 1000, 1250];
+            const result = array.map(el => el *= 0.2)
 
-            document.write(`Old = ${names} <br>`)
-            document.write(`New = ${result}`)
+            document.write(`${result}`)
         }
     </script>
 </body>

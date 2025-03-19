@@ -10,17 +10,18 @@
 
     <h1>Завдання 9</h1>
     <p>
-        Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.
+        Знайти першу ціну, що більше за 1000
     </p>
 
     <p>Відповідь</p>
 
     <script>
         if (confirm('Почати тестування?')) {
-            const array = [300, 400, 500, 1100, 700, 1800, 40, 1000, 1250];
-            const result = array.map(el => el *= 0.2)
+            const array = Array.from({ length: 20 }, () => Math.floor(Math.random() * 1500) + 1);
+            let result = array.find(el => el >= 1000)
 
-            document.write(`${result}`)
+            document.write(`<p>Згенерований массив: ${array}</p>`)
+            document.write(`<p>Результат: ${result}</p>`)
         }
     </script>
 </body>

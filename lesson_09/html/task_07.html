@@ -8,19 +8,21 @@
 <body>
     <a href="../index.html">Home page</a>
 
-    <h1>Завдання 6</h1>
+    <h1>Завдання 7</h1>
     <p>
-        Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
+        Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»
     </p>
 
     <p>Відповідь</p>
 
     <script>
         if (confirm('Почати тестування?')) {
-            const array = [300, 400, 500, 1100, 700, 1800, 40, 1000, 1250];
-            const result = array.filter(el => el >= 1000).map(el => el *= 0.7)
 
-            document.write(`${result}`)
+            const carNumber = ["АА9728АА", "АМ3678СТ", "ИТ7814АС", "АБ1578БА", "РИ12", "АМ8Т"]
+            const result = carNumber.filter(el => el.charCodeAt(0) === 1040 )
+
+            document.write(`Old = ${carNumber} <br>`)
+            document.write(`New = ${result}`)
 
         }
     </script>

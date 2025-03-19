@@ -8,22 +8,20 @@
 <body>
     <a href="../index.html">Home page</a>
 
-    <h1>Завдання 7</h1>
+    <h1>Завдання 8</h1>
     <p>
-        Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»
+        Дано масив імен. Сформувати масив з перших літер цих імен.
     </p>
 
     <p>Відповідь</p>
 
     <script>
         if (confirm('Почати тестування?')) {
+            const names = ['Іван', 'Дмитро', 'Іван', 'Олена', 'Степан', 'Іван']
+            const result = names.map(el => el[0])
 
-            const carNumber = ["АА9728АА", "АМ3678СТ", "ИТ7814АС", "АБ1578БА", "РИ12", "АМ8Т"]
-            const result = carNumber.filter(el => el.charCodeAt(0) === 1040 )
-
-            document.write(`Old = ${carNumber} <br>`)
+            document.write(`Old = ${names} <br>`)
             document.write(`New = ${result}`)
-
         }
     </script>
 </body>

@@ -11,25 +11,29 @@
 
     <h1>Завдання 2</h1>
     <p>
-        Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
+        Користувач вводить кількість елементів.
+        Створити масив, у якому перші 5 елементів заповнені 1-цями, а інші до кінця масиву заповнені 7-ками.
     </p>
 
     <p>Відповідь</p>
 
     <script>
         if (confirm('Почати тестування?')) {
+            let elCount = parseInt(prompt('Введіть кількість єлементів, більше 5'))
 
-            const names = ['Іван', 'Дмитро', 'Іван', 'Олена', 'Степан', 'Іван']
-            
-            function foundName(arr) {
-                let count = 0;
-
-                for (let i = 0; i < arr.length; i ++) {
-                    if ( arr[i] === 'Іван' ) count++
-                }
-                return count
+            if (elCount <= 5) {
+                alert('Введіть число більше ніж 5')
+                elCount = parseInt(prompt('Введіть кількість єлементів, більше 5'))
             }
-            document.write(`<p>Ім"я Іван у списку: ${foundName(names)} разів</p>`)
+
+            function getArr(arr) {
+                let userArray = new Array(arr)
+                let firstFive = 5
+                userArray.fill(1, 0, firstFive)
+                userArray.fill(7, firstFive, arr)
+                return userArray
+            }
+            document.write(`<p>${getArr(elCount)}</p>`)
         }
     </script>
 </body>

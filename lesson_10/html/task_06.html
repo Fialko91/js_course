@@ -10,18 +10,18 @@
 
     <h1>Завдання 6</h1>
     <p>
-        Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.
+        Визначати, чи усі ціни більше за 1000
     </p>
 
     <p>Відповідь</p>
 
     <script>
         if (confirm('Почати тестування?')) {
-            const array = [300, 400, 500, 1100, 700, 1800, 40, 1000, 1250];
-            const result = array.filter(el => el >= 1000).map(el => el *= 0.7)
+            const array = Array.from({ length: 20 }, () => Math.floor(Math.random() * 1500) + 1);
+            const result = array.every(el => el >= 1000)
 
-            document.write(`${result}`)
-
+            document.write(`<p>Згенерований массив: ${array}</p>`)
+            document.write(`<p>Результат: ${result}</p>`)
         }
     </script>
 </body>

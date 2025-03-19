@@ -11,81 +11,23 @@
 
     <h1>Завдання 1</h1>
     <p>
-        Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
+        Користувач вводить кількість елементів.
+        Створити масив, у якому перша половина заповнена 1-цями, а друга заповнена 7-ками.
     </p>
-    <ul>
-        <li>номери днів, протягом яких кількість відвідувачів була меншою за 20;</li>
-        <li>номери днів, коли кількість відвідувачів була мінімальною;</li>
-        <li>номери днів, коли кількість відвідувачів була максимальною;</li>
-        <li>загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.</li>
-    </ul>
 
     <p>Відповідь</p>
     <script>
         if (confirm('Почати тестування?')) {
+            const el = parseInt(prompt('Введіть кількість єлементів'))
 
-            const arrVisitors = [100, 4, 10, 19, 79, 67, 101];
-
-            function lessWeek(arr) {
-                let res = []
-
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i] <= 20) res.push(i + 1)
-                }
-
-                return res
+            function getArr(arr) {
+                let userArray = new Array(arr)
+                let halfArray = Math.floor(arr / 2)
+                userArray.fill(1, 0, halfArray)
+                userArray.fill(7, halfArray, arr)
+                return userArray
             }
-
-            function minCountBuyers(arr) {
-
-                let resMinDay = []
-                let minNumBuyers = arr[0]
-                for (let i = 1; i < arr.length; i++) {
-                    if (arr[i] < minNumBuyers) {
-                        minNumBuyers = arr[i]
-                        resMinDay.push(i + 1)
-                    }
-                }
-                return resMinDay
-            }
-
-            function maxCountBuyers(arr) {
-
-                let resMaxDay = []
-                let maxNumBuyers = arr[0]
-                for (let i = 1; i < arr.length; i++) {
-                    if (arr[i] > maxNumBuyers) {
-                        maxNumBuyers = arr[i]
-                        resMaxDay.push(i + 1)
-                    }
-                }
-                return resMaxDay
-            }
-
-            function numBuyersWorkDay (arr) {
-                let res = 0
-                for ( let i = 0; i < 5; i++) {
-                    res += arr[i]
-                }
-
-                return res
-            }
-
-            function numBuyersWeekend (arr) {
-                let res = 0
-                for ( let i = 5; i < 7; i++) {
-                    res += arr[i]
-                }
-
-                return res
-            }
-
-            document.write(`<p>номери днів, протягом яких кількість відвідувачів була меншою за 20: ${lessWeek(arrVisitors)}</p>`)
-            document.write(`<p>номери днів, коли кількість відвідувачів була мінімальною: ${minCountBuyers(arrVisitors)}</p>`)
-            document.write(`<p>номери днів, коли кількість відвідувачів була мінімальною: ${maxCountBuyers(arrVisitors)}</p>`)
-            document.write(`<p>загальну кількість клієнтів у робочі дні: ${numBuyersWorkDay(arrVisitors)}</p>`)
-            document.write(`<p>загальну кількість клієнтів на вихідних.: ${numBuyersWeekend(arrVisitors)}</p>`)
-
+            document.write(`<p>${getArr(el)}</p>`)
         }
     </script>
 

@@ -10,20 +10,21 @@
 
     <h1>Завдання 7</h1>
     <p>
-        Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»
+        Підрахувати кількість цін, що більше за 1000
     </p>
 
     <p>Відповідь</p>
 
     <script>
         if (confirm('Почати тестування?')) {
+            const array = Array.from({ length: 20 }, () => Math.floor(Math.random() * 1500) + 1);
+            let result = 0
+            array.map(el => {
+                if (el >= 1000) result++
+            })
 
-            const carNumber = ["АА9728АА", "АМ3678СТ", "ИТ7814АС", "АБ1578БА", "РИ12", "АМ8Т"]
-            const result = carNumber.filter(el => el.charCodeAt(0) === 1040 )
-
-            document.write(`Old = ${carNumber} <br>`)
-            document.write(`New = ${result}`)
-
+            document.write(`<p>Згенерований массив: ${array}</p>`)
+            document.write(`<p>Результат: ${result}</p>`)
         }
     </script>
 </body>
