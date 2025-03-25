@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 00</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_00.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 00</h1>
+    <p>Знайти суми елементів у вказаній області (зафарбована область охоплює відповідну половину рядків і стовпців)</p>
+    <ol>
+        <li>номери рядків від 0 до половини, стовпці від 0 до половини</li>
+        <li>номери рядків від 0 до половини, стовпці від половини до кінця</li>
+        <li>номери рядків (від половини до кінця, стовпці від 0 до половини</li>
+        <li>номери рядків від половини до кінця , стовпці від половини до кінця</li>
+        <li>Суму парних рядків</li>
+        <li>Суму непарних стовпців</li>
+        <li>У парних рядках – непарні стовпці, у непарних – парні.</li>
+    </ol>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const array = [
+                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+                [21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+                [31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
+                [41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+                [51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+                [61, 62, 63, 64, 65, 66, 67, 68, 69, 70],
+                [71, 72, 73, 74, 75, 76, 77, 78, 79, 80],
+                [81, 82, 83, 84, 85, 86, 87, 88, 89, 90],
+                [91, 92, 93, 94, 95, 96, 97, 98, 99, 100],
+            ];
+
+            function getFirstQuoterNumbers(arr, endRows, endColumns, startRows = 0, startColumns = 0) {
+                const result = [];
+                for (let i = startRows; i < endRows; i++) {
+                    for (let j = startColumns; j < endColumns; j++) {
+                        result.push(arr[i][j]);
+                    }
+                }
+                return result.reduce((acc, el) => acc + el, 0)
+            }
+
+            function getSumEvenRows(arr, oddNumber = true) {
+                let result = 0;
+                if (oddNumber) {
+                    for (let i = 0; i < arr.length; i++) {
+                        for (let j = 0; j < arr.length; j++) {
+                            if (arr[i][j] % 2 === 0) result += arr[i][j];
+                        }
+                    }
+                } else {
+                    for (let i = 0; i < arr.length; i++) {
+                        for (let j = 0; j < arr.length; j++) {
+                            if (arr[i][j] % 3 === 0) result += arr[i][j];
+                        }
+                    }
+                }
+                return result;
+            }
+
+            function getOddAndEvenRowsArray(arr, start1 = 1, start2 = 0){
+                let resultArr = []
+                for (let i = start1; i < arr.length; i+=2) {
+                    for (let j = start2; j < arr.length; j+=2) {
+                        resultArr.push(arr[i][j]);
+                    }
+                }
+                return resultArr.reduce((acc, el) => acc + el, 0)
+            }
+
+            document.write(`<p>Сума елементів у верхньому лівому квадранті: ${getFirstQuoterNumbers(array, array.length / 2, array.length / 2)}</p>`)
+            document.write(`<p>Сума елементів у верхньому правому квадранті: ${getFirstQuoterNumbers(array, array.length / 2, array.length, 0, array.length / 2)}</p>`)
+            document.write(`<p>Сума елементів у нижнему лівому квадранті: ${getFirstQuoterNumbers(array, array.length, array.length / 2, array.length / 2, 0)}</p>`)
+            document.write(`<p>Сума елементів у нижнему правому квадранті: ${getFirstQuoterNumbers(array, array.length, array.length, array.length / 2, array.length / 2)}</p>`)
+            document.write(`<p>Суму парних рядків: ${getSumEvenRows(array)}`)
+            document.write(`<p>Суму непарних  рядків: ${getSumEvenRows(array, false)}`)
+            document.write(`<p>У парних рядках – непарні стовпці, у непарних – парні: ${getOddAndEvenRowsArray(array)}`)
+            document.write(`<p>У непарних – парні: ${getOddAndEvenRowsArray(array, 0, 1)}`)
+        }
+    </script>
+</body>
+</html>

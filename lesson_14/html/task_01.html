@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 01</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_01.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 1</h1>
+    <p>Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.</p>
+
+    <p>Відповідь</p>
+    <script>
+        if (confirm('Почати тестування?')) {
+            function getFutureYear(obj, monthsToAdd) {
+                const date = new Date(obj.year, obj.month - 1, obj.day);
+                date.setMonth(date.getMonth() + monthsToAdd);
+                return date.getFullYear();
+            }
+
+            const testDate = {
+                day: 1,
+                month: 1,
+                year: 2000
+            };
+
+            const month = parseInt(prompt('Введіть кількість місяців'))
+
+            document.write(`Початкова дата 01.01.2000, а результат буде ${getFutureYear(testDate, month)}`)
+        }
+    </script>
+
+</body>
+</html>
