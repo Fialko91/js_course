@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 01</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_01.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 1</h1>
+    <p>
+        Створити службове авто (водій, марка, номер). 
+        Створити клас таким чином, щоб можна було створити тільки один екземпляр цього класу.
+    </p>
+
+    <p>Відповідь</p>
+    <script>
+        if (confirm('Почати тестування?')) {
+            class Car {
+                static CarRef
+
+                constructor(driver, mark, numberCar) {
+                    if (Car.CarRef) {
+                        return Car.CarRef
+                    }
+
+                    this.driver = driver
+                    this.mark = mark
+                    this.numberCar = numberCar
+
+                    Car.CarRef = this
+                }
+
+                toString() {
+                    return `${this.driver} ${this.mark} ${this.numberCar} `
+                }
+            }
+
+            const car = new Car('Петро', 'BMW', 'КА4578АА')
+            document.write(car.toString())
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 00</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_00.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 0</h1>
+    <p>Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.</p>
+
+    <p>Відповідь</p>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const shotGames = {
+                targetPosition: [1, 0, 1, 0, 0, 1, 0, 1, 0, 0],
+                getShotMethod() {
+                    let userShoot;
+                    do {
+                        userShoot = parseInt(prompt(`Введіть номер ячейки для пострілу від 1 до ${this.targetPosition.length}`)) - 1;
+                    }
+                    while (userShoot < 0 || userShoot >= this.targetPosition.length);
+
+                    if (this.targetPosition[userShoot] === 0) {
+                        this.targetPosition[userShoot] = "❌";
+                        alert("Промах");
+                    } else if (this.targetPosition[userShoot] === 1) {
+                        this.targetPosition[userShoot] = "🐰";
+                        alert("Ви влучили!");
+                    } else if (
+                      this.targetPosition[userShoot] === "🐰" ||
+                      this.targetPosition[userShoot] === "❌"
+                    )
+                        alert("Сюди ви вже стрiляли");
+
+                    this.getOutputField()
+                },
+                getOutputField  () {
+                    const playArr = this.targetPosition.map((el) =>
+                      el === 0 || el === 1 ? "?" : el
+                    );
+                    document.write(`<div>${playArr.join(" | ")}</div>`);
+                }
+            }
+
+            shotGames.getShotMethod()
+        }
+    </script>
+</body>
+</html>

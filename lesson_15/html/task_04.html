@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 3</h1>
+<p>
+    Розробити клас «Керівник танців»
+</p>
+<img src="../../img/img_4.png" alt="">
+
+<p>Відповідь</p>
+
+<script>
+    if (confirm('Почати тестування?')) {
+        class DanceDirector {
+            constructor(arrMale, arrFemale) {
+                this.arrMale = arrMale
+                this.arrFemale = arrFemale
+                this.intervalCount = 0
+                this.interval = null
+            }
+
+            getRandomNumber() {
+                return Math.floor(Math.random() * 5)
+            }
+
+            getMaleName() {
+                return this.arrMale[this.getRandomNumber()]
+            }
+
+            getFemaleName() {
+                return this.arrFemale[this.getRandomNumber()]
+            }
+
+            getCoupleDance() {
+                return `
+                    ${this.getMaleName()} + ${this.getFemaleName()}
+                `
+            }
+
+            run() {
+                return this.interval = setInterval(() => {
+                    this.intervalCount++
+                    document.write(`${this.getCoupleDance()}<br>`)
+                    if(this.intervalCount >=5) this.stopInterval()
+                }, 5000)
+            }
+            stopInterval() {
+                if(this.interval) {
+                    clearInterval(this.interval)
+                    this.interval = null
+                }
+            }
+        }
+
+        const maleNames = ["Артем", "Олександр", "Максим", "Іван", "Дмитро"];
+        const femaleNames = ["Олена", "Софія", "Анастасія", "Катерина", "Марія"];
+
+        const name = new DanceDirector(maleNames, femaleNames)
+
+        document.write(`
+            Хлопець який буде танлювати: ${name.getMaleName()} <br>
+            Дівцина яка буде танцювати: ${name.getFemaleName()} <br>
+            Пара яка буде танцювати: ${name.getCoupleDance()} <br>
+        `)
+
+        name.run()
+    }
+</script>
+</body>
+
+</html>

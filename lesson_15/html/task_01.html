@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 01</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_01.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 1</h1>
+    <p>Створити об’єкт «Авто».</p>
+    <img src="../../img/img_1.png" alt="">
+
+    <p>Відповідь</p>
+    <script>
+        if (confirm('Почати тестування?')) {
+            function Car(brand, tankSize, numberLitersAvailable, numberSeats, numberPassengers, carRefuelingLiters, addPassengersNum, disPassengersNum) {
+                this.brand = brand
+                this.tankSize = tankSize
+                this.numberLitersAvailable = numberLitersAvailable
+                this.carRefuelingLiters = carRefuelingLiters
+                this.numberSeats = numberSeats
+                this.addPassengersNum = addPassengersNum,
+                this.numberPassengers = numberPassengers
+                this.disPassengersNum = disPassengersNum
+
+                this.carRefueling = function () {
+                    if (this.carRefuelingLiters + this.numberLitersAvailable > this.tankSize) alert('Забагато бензину! Зменшіть кількість')
+                    else this.numberLitersAvailable += this.carRefuelingLiters
+                    return this.numberLitersAvailable
+                }
+
+                this.getCountPassengers = function () {
+                    document.write(`Кількість пасажирів у авто - ${this.numberPassengers}`)
+                }
+
+                this.addingPassengers = function () {
+                    if (this.numberPassengers + this.addPassengersNum > this.numberSeats) alert('Забагато пасажирів')
+                    else this.numberPassengers += this.addPassengersNum
+                    return this.numberPassengers
+                }
+
+                this.passengerDisembarkation = function () {
+                    if (this.disPassengersNum > this.numberPassengers) alert('Виникла помилка, зменшіть кількість пасажирів')
+                    else this.numberPassengers -= this.disPassengersNum
+                    return this.numberPassengers
+                }
+            }
+
+            const myCar = new Car('BMW', 70, 45, 4, 3, 10, 1, 2)
+            console.log(myCar)
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 2</h1>
+<p>
+    Розробити клас MultChecker для перевірки таблиці множення
+</p>
+<img src="../../img/img_2.png" alt="">
+
+<p>Відповідь</p>
+
+<script>
+    if (confirm('Почати тестування?')) {
+        class MultChecker {
+            constructor(number) {
+                this.number = number
+                this.numberCorrectAnswers = 0
+                this.numberIncorrectAnswers = 0
+            }
+
+            getGenerateExample() {
+                return 1 + Math.floor(Math.random() * 10)
+            }
+
+            getExample(num) {
+                const num1 = num * this.number
+                const userAnswer = parseInt(prompt(`Скільки буде ${num} * ${this.number} ?`))
+                let result = false
+                if (userAnswer === num1) result = true
+                return result
+            }
+            render(attempts) {
+                for (let i = 0; i < attempts; i++) {
+                    if (this.getExample(this.getGenerateExample())) this.numberCorrectAnswers++
+                    else this.numberIncorrectAnswers++
+                }
+                return `
+                <p>
+                    Правильних відповідей - ${this.numberCorrectAnswers}, <br>
+                    Не правильних відповідей  - ${this.numberIncorrectAnswers}.
+                </p>
+                `
+            }
+        }
+
+        let userNumber = parseInt(prompt('Введіть цифру для перевірки таблиці множення', 5))
+        let userAttempts = parseInt(prompt('Введіть кількість спроб', 4))
+        let example = new MultChecker(userNumber)
+        document.write(example.render(userAttempts))
+
+        // console.log(example.getGenerateExample())
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 2</h1>
+<img src="../../img/img_5.png" alt="">
+
+<p>Відповідь</p>
+
+<script>
+    if (confirm('Почати тестування?')) {
+        //назва фірми;
+        //дата заснування (рік, місяць);
+
+        //послуги (назва послуги, вартість, термін виконання);
+        //адреси філіалів (країна, місто, вулиця, номер будинку);
+
+        //визначення кількості років існування фірми;
+        //виведення всіх філіалів фірми у вказаному місті;
+        //виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
+
+        class Service {
+            constructor(name, cost, durationDays) {
+                this.name = name;
+                this.cost = cost;
+                this.durationDays = durationDays;
+            }
+        }
+
+        class Branch {
+            constructor(country, city, street, buildingNumber) {
+                this.country = country;
+                this.city = city;
+                this.street = street;
+                this.buildingNumber = buildingNumber;
+            }
+
+            toString() {
+                return `${this.country}, ${this.city}, ${this.street}, буд. ${this.buildingNumber}`;
+            }
+        }
+
+        class Firm {
+            constructor(name, foundedYear) {
+                this.name = name;
+                this.foundedYear = foundedYear;
+                this.services = [];
+                this.branches = [];
+            }
+
+            addService(service) {
+                this.services.push(service);
+                console.log(this.services)
+            }
+
+            addBranch(branch) {
+                this.branches.push(branch);
+                console.log(this.branches)
+            }
+
+            getYearsInBusiness() {
+                const now = new Date();
+                let years = now.getFullYear() - this.foundedYear;
+                return years;
+            }
+
+            getBranchesInCity(city) {
+                return this.branches.filter(branch => branch.city.toLowerCase() === city.toLowerCase());
+            }
+
+            getAvailableServices(maxCost, maxDuration) {
+                return this.services.filter(service =>
+                  service.cost <= maxCost && service.durationDays <= maxDuration
+                );
+            }
+        }
+
+        const firm = new Firm("Bro Solution", 1991);
+
+        firm.addBranch(new Branch("Україна", "Київ", "Шулявка", 12));
+        firm.addBranch(new Branch("Україна", "Львів", "Січових Стрільців", 21));
+
+        firm.addService(new Service("Розробка сайту", 1000, 30));
+        firm.addService(new Service("SEO оптимізація", 500, 15));
+        firm.addService(new Service("Техпідтримка", 300, 5));
+
+        document.write(`<h2>Фірма: ${firm.name}</h2>`);
+        document.write(`<p>Роки існування: ${firm.getYearsInBusiness()}</p>`);
+        const kyivBranches = firm.getBranchesInCity("Київ");
+
+        document.write(`<p>Філіали у Києві:</p>`);
+        document.write(`<ul>`)
+        kyivBranches.forEach(branch => {document.write(`<li>${branch.toString()}</li>`);});
+        document.write(`</ul>`)
+        const available = firm.getAvailableServices(600, 10);
+        document.write(`<p>Послуги до 600 грн і не довше 10 днів:</p>`);
+        document.write(`<ul>`)
+        available.forEach(service => {
+            document.write(`<li>${service.name} — ${service.cost} грн, ${service.durationDays} днів</li>`);
+        });
+        document.write(`</ul>`);
+
+    }
+</script>
+</body>
+
+</html>

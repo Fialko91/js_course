@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 01</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_01.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 1</h1>
+    <p>
+        Створити клас TMoney для роботи з грошовими сумами.
+        Сума повинна зберігатися у вигляді доларового еквіваленту.
+        Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара,
+        при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.
+    </p>
+
+    <p>Відповідь</p>
+    <script>
+        if (confirm('Почати тестування?')) {
+            class TMoney {
+                constructor(grnAmount, rateDollars) {
+                    this.RateDollar = rateDollars
+                    this.MoneyBalance = grnAmount
+                }
+                #rateDollars
+                #moneyBalance
+
+                get RateDollar() {
+                    console.log('=>', this.#rateDollars)
+                    return this.#rateDollars;
+                }
+
+                set RateDollar(dollarsRate) {
+                    this.#rateDollars = dollarsRate
+                }
+
+                get MoneyBalance() {
+                    return this.#moneyBalance * this.RateDollar;
+                }
+
+                set MoneyBalance(newAmount) {
+                    this.#moneyBalance = newAmount / this.RateDollar;
+                }
+
+                incrementGrn(newVal) {
+                    this.MoneyBalance += newVal;
+                }
+
+                decrementGrn(newVal) {
+                    this.MoneyBalance = newVal;
+                }
+
+                toString() {
+                    return `<p>Сума на рахунку: ${this.MoneyBalance}грн / ${this.MoneyBalance / this.RateDollar}$</p>`;
+                }
+
+            }
+
+            const money = new TMoney(1000, 40)
+            document.write(money)
+            money.incrementGrn(100)
+            document.write(money)
+            money.decrementGrn(300)
+            document.write(money)
+
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 3</h1>
+<p>
+    Розробити клас Banner
+</p>
+<img src="../../img/img_3.png" alt="">
+
+<p>Відповідь</p>
+
+<script>
+    if (confirm('Почати тестування?')) {
+        class Banner {
+            constructor(arr) {
+                this.array = arr
+            }
+
+            getRandomIndex() {
+                return Math.floor(Math.random() * 3)
+            }
+
+            renderBanner(arr) {
+                let inx = this.getRandomIndex()
+                return `
+                    <a href="${arr[inx].siteLink}" target="_blank">
+                      <img src="${arr[inx].siteLogo}" alt="" height="50">
+                    </a>
+                `
+            }
+        }
+
+        let arr= [
+              {
+                siteLogo: "https://content2.rozetka.com.ua/mb_logo/image_site_mini_logo/original/349608608.svg",
+                siteLink: "https://rozetka.com.ua/",
+              },
+            {
+                siteLogo: "https://skin.comfy.ua/skin/frontend/enterprise/comfy_3/modules/common/img/logo_main.svg",
+                siteLink: "https://comfy.ua/ua/",
+            },
+            {
+                siteLogo: "https://upload.wikimedia.org/wikipedia/commons/2/23/Mascot_Foxy.png",
+                siteLink: "https://www.foxtrot.com.ua/",
+            }
+        ]
+
+        const banner = new Banner()
+        document.write(banner.renderBanner(arr))
+    }
+</script>
+</body>
+
+</html>
