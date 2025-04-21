@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 00</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_00.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 00</h1>
+    <p>
+        Розробити калькулятор
+    </p>
+    <img src="../../img/img_6.png" alt="">
+
+    <p>Відповідь</p>
+
+    <div class="form" style="display: grid">
+        <label for="firstNumber">
+            First number
+            <input type="text" name="" id="firstNumber" >
+        </label>
+        <label for="secondNumber">
+            Second number
+            <input type="text" name="" id="secondNumber" >
+        </label>
+        <div class="btns-action">
+            <button type="button" class="btn-calc" data-calc="+">Додати</button>
+            <button type="button" class="btn-calc" data-calc="-">Відняти</button>
+            <button type="button" class="btn-calc" data-calc="*">Помножити</button>
+            <button type="button" class="btn-calc" data-calc="/">Поділити</button>
+        </div>
+        <label for="result">
+            Результат
+            <input type="text" name="" id="result" value="0">
+        </label>
+    </div>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const btns = document.querySelector('.btns-action')
+            let firstNumber = document.querySelector('#firstNumber')
+            let secondNumber = document.querySelector('#secondNumber')
+            let result = document.querySelector('#result')
+
+            btns.onclick = function (event) {
+                let val = event.target.dataset.calc
+
+                switch (val) {
+                    case '+':
+                        result.value = `${parseInt(firstNumber.value) + parseInt(secondNumber.value)}`
+                        break
+                    case '-':
+                        result.value = `${parseInt(firstNumber.value) - parseInt(secondNumber.value)}`
+                        break
+                    case '*':
+                        result.value = `${parseInt(firstNumber.value) * parseInt(secondNumber.value)}`
+                        break
+                    case '/':
+                        result.value = `${parseInt(firstNumber.value) / parseInt(secondNumber.value)}`
+                        break
+                }
+
+                firstNumber.value = ''
+                secondNumber.value = ''
+            }
+
+        }
+    </script>
+</body>
+</html>

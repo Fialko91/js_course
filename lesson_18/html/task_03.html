@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 3</h1>
+<p>
+    Наперед задано у скрипті масив зі списком бажань.
+    Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div
+    (їх треба створити і додати на сторінку)
+</p>
+
+<p >Відповідь</p>
+<ol id="answer"></ol>
+
+<script>
+    if (confirm('Почати тестування?')) {
+        const wishlist = [
+            "Подорожувати в Японію",
+            "Вивчити нову мову",
+            "Купити новий ноутбук",
+            "Навчитися грати на гітарі",
+            "Прочитати 20 книг за рік",
+            "Зайнятися спортом регулярно",
+            "Запустити свій проєкт або блог",
+            "Навчитися малювати",
+            "Побачити північне сяйво",
+            "Познайомитися з цікавими людьми"
+        ];
+
+        const answer = document.getElementById('answer')
+        let count = 0
+        let interval = null
+
+        function getWishlist() {
+            interval = setInterval(() => {
+                count++
+
+                let randomNumber = Math.floor(Math.random() * 10)
+                let liItem = document.createElement('li')
+
+                liItem.innerText = wishlist[randomNumber]
+                answer.append(liItem)
+
+                if (count === 10) stopInterval()
+            }, 500)
+        }
+
+        function stopInterval() {
+            clearInterval(interval)
+            interval = null
+        }
+
+        document.addEventListener('DOMContentLoaded', getWishlist)
+
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 2</h1>
+<p>
+    Подорож складається з 3 етапів.
+    На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список),
+    харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати  - radio buttons).
+    Ціни визначте самі. Підрахувати загальну вартість.
+</p>
+
+<p>Відповідь</p>
+
+<form class="form">
+    <div class="chose-transport">
+        <select name="cars" id="cars">
+            <option value="100">авто</option>
+            <option value="200">автобус</option>
+            <option value="300">літак</option>
+        </select>
+    </div>
+
+    <div class="chose-food">
+        <label>
+            сніданок
+            <input type="checkbox" value="100">
+        </label>
+        <label>
+            обід
+            <input type="checkbox" value="200">
+        </label>
+        <label>
+            вечеря
+            <input type="checkbox" value="150" checked>
+        </label>
+    </div>
+
+    <div class="chose-guide">
+        <label>
+            гід - Петро
+            <input type="radio" name="name" value="1100">
+        </label>
+        <label>
+            гід - Олег
+            <input type="radio" name="name" value="2000" checked>
+        </label>
+        <label>
+            гід - Сергій
+            <input type="radio" name="name" value="1500">
+        </label>
+    </div>
+
+    <button type="button" class="result">Підрахувати</button>
+
+</form>
+
+<div id="result"></div>
+
+<script>
+    if (confirm('Почати тестування?')) {
+
+        const btn = document.querySelector('.result')
+        let result = document.getElementById('result')
+
+        function getTotalCoast(e) {
+            const selects = document.querySelectorAll("select")
+            const inps = document.querySelectorAll("input")
+            e.stopPropagation()
+            let cost = 0
+
+            for (let select of selects) {
+                cost += parseInt(select.value)
+            }
+
+            for (let inp of inps) {
+                if (inp.checked) cost += parseInt(inp.value)
+            }
+
+            result.innerText = `З Вас: ${cost}`
+        }
+
+        btn.addEventListener('click', getTotalCoast)
+
+    }
+</script>
+</body>
+
+</html>

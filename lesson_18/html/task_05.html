@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 5</h1>
+<p>
+    Користувач задає кількість оцінок і натискає на кнопку «get table».
+    В результаті формується таблиця з input, куди користувач вводить оцінки.
+    Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+</p>
+<img src="../../img/img_8.png" alt="">
+
+<p>Відповідь</p>
+
+<div class="form" style="display: grid; gap: 12px">
+    <label for="price">
+        Price number
+        <input type="text" name="" id="price" >
+    </label>
+
+    <button
+      type="button"
+      class="get-table"
+      style="width: max-content"
+    >get table</button>
+
+    <div class="table-block">
+        <label for="firstValue">
+            <input type="text" name="" id="firstValue" value="0">
+        </label>
+        <label for="secondValue">
+            <input type="text" name="" id="secondValue" value="0">
+        </label>
+
+        <button class="get-sum">get sum</button>
+        <p id="result"></p>
+    </div>
+
+</div>
+
+<script>
+    if (confirm('Почати тестування?')) {
+        let price = document.querySelector('#price')
+        let getTable = document.querySelector('.get-table')
+        let tableBlock = document.querySelector('.table-block')
+        let getSum = document.querySelector('.get-sum')
+        let result = document.querySelector('#result')
+        let firstValue = document.querySelector('#firstValue')
+        let secondValue = document.querySelector('#secondValue')
+
+        tableBlock.className = 'hide'
+
+        function showTableBlock() {
+            tableBlock.className = 'show'
+        }
+
+        function getCalcResult() {
+            let calcResult = firstValue.value * secondValue.value / price.value
+            result.append(`Відповідь: ${calcResult}`)
+        }
+
+        getTable.onclick = showTableBlock
+        getSum.onclick = getCalcResult
+    }
+</script>
+</body>
+
+</html>

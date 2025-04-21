@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 4</h1>
+<p>
+    Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити і вставити на сторінку)
+</p>
+
+<p id="answer"></p>
+
+
+<script>
+    if (confirm('Почати тестування?')) {
+        const answer = document.querySelector('#answer')
+
+        function createTable(row, col) {
+            const table = document.createElement('table')
+
+            for (let i = 0; i < row; i++) {
+                const row = document.createElement('tr')
+
+                for (let j = 0; j < col; j++) {
+                    const column = document.createElement('td')
+                    column.innerText = Math.floor(Math.random() * 100)
+                    row.append(column)
+                }
+                table.append(row)
+            }
+            return table
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            answer.append(createTable(3, 4))
+        })
+
+    }
+</script>
+</body>
+
+</html>

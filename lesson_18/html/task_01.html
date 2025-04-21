@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 01</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_01.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 1</h1>
+    <p>
+        Зробити конвертер валют (курси валют – константи у скрипті)
+    </p>
+    <img src="../../img/img_7.png" alt="">
+
+    <p>Відповідь</p>
+
+    <div class="form" style="display: grid; gap: 12px">
+        <label for="mainAmount">
+            Сумма в грн
+            <input type="text" name="" id="mainAmount" >
+        </label>
+
+        <button
+          type="button"
+          class="btn-convert"
+          style="width: max-content"
+        >Конвертувати</button>
+
+        <label for="resultEuro">
+            Сумма в євро
+            <input type="text" name="" id="resultEuro" value="0">
+        </label>
+        <label for="resultUsd">
+            Сумма в долларах
+            <input type="text" name="" id="resultUsd" value="0">
+        </label>
+    </div>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const EUR = 45
+            const USD = 40
+
+            const btn = document.querySelector('.btn-convert')
+            const mainAmount = document.querySelector('#mainAmount')
+            const resultEuro = document.querySelector('#resultEuro')
+            const resultUsd = document.querySelector('#resultUsd')
+
+            function converterMoney() {
+                convertUsd()
+                convertEuro()
+                mainAmount.value = ''
+            }
+
+            function convertUsd() {
+                resultUsd.value = mainAmount.value * USD
+            }
+
+            function convertEuro() {
+                resultEuro.value = mainAmount.value * EUR
+            }
+
+            btn.addEventListener('click', converterMoney)
+
+        }
+    </script>
+
+</body>
+</html>

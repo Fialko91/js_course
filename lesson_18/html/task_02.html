@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 2</h1>
+<p>
+    Користувач задає рік народження. Визначити кількість років користувача.
+</p>
+
+<p id="answer">Відповідь</p>
+
+<script>
+    if (confirm('Почати тестування?')) {
+        const year = prompt('Введіть рік вашого народження')
+        const getYear = new Date().getFullYear()
+        const answer = document.getElementById('answer')
+
+        answer.after(`Вам зараз ${getYear - year}`)
+    }
+</script>
+</body>
+
+</html>
