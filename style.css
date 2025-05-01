@@ -37,3 +37,56 @@ form {
     display: grid;
     gap: 12px;
 }
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.border {
+    border-color: red;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    gap: 12px;
+}
+
+.container-elem {
+    border: 2px solid #989696;
+    background-color: burlywood;
+    position: relative;
+    cursor: pointer;
+}
+
+.container-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.container-price {
+    color: greenyellow;
+}
+
+.container-label {
+    position: absolute;
+    top: 6px;
+    inset-inline-start: 6px;
+
+    border-radius: 40px;
+    padding: 4px 8px ;
+
+    &.new {
+        background-color: greenyellow;
+    }
+
+    &.popular {
+        background-color: #ee3154;
+    }
+}
+
+.active {
+    border-color: #00ff00;
+}

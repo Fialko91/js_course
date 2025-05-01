@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 01</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_01.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 1</h1>
+    <p>
+        Дано 5 елементів input.
+        При введенні значення у якийсь із них необхідно автоматично заповнювати
+        інші (усі попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний),
+        усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+    </p>
+    <img src="../../img/img_9.png" alt="">
+
+    <p>Відповідь</p>
+
+    <div class="container" style="display: flex; flex-direction: column">
+        <label for="form_1" class="form-input">
+            Value 1
+            <input  id="form_1" value="1">
+        </label>
+        <label for="form_2" class="form-input">
+            Value 2
+            <input  id="form_2" value="2">
+        </label>
+        <label for="form_3" class="form-input">
+            Value 3
+            <input  id="form_3" value="3">
+        </label>
+        <label for="form_4" class="form-input" >
+            Value 4
+            <input  id="form_4" value="4">
+        </label>
+        <label for="form_5" class="form-input">
+            Value 5
+            <input  id="form_5" value="5">
+        </label>
+    </div>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const els = document.querySelectorAll('.form-input input')
+
+            els.forEach((elem, inx) => {
+                elem.addEventListener('change', (e) => {
+                    let getPrevElements = Array.from(els).slice(0, inx)
+                    let getNextElements = Array.from(els).slice(inx + 1)
+                    getPrevElements.forEach(el => {
+                        if (el.value >= 1) el.value--
+                    })
+                    getNextElements.forEach(el => {
+                        if (el.value >= 0)  el.value++
+                    })
+                })
+            })
+        }
+    </script>
+
+</body>
+</html>

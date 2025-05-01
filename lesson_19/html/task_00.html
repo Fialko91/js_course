@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 00</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_00.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 00</h1>
+    <p>
+        Дано 10 рядків тексту «Hello!» у окремих div. При кліку на якийсь із них усі наступні повинні бути зафарбовані у червоний колір.
+    </p>
+
+    <p>Відповідь</p>
+
+    <div class="container">
+        <div class="container-item">Hello</div>
+        <div class="container-item">Hello</div>
+        <div class="container-item">Hello</div>
+        <div class="container-item">Hello</div>
+        <div class="container-item">Hello</div>
+        <div class="container-item">Hello</div>
+        <div class="container-item">Hello</div>
+        <div class="container-item">Hello</div>
+        <div class="container-item">Hello</div>
+        <div class="container-item">Hello</div>
+    </div>
+
+    <script>
+        if (confirm('Почати тестування?')) {
+
+            const els = document.querySelectorAll('.container-item')
+            els.forEach((elem, inx) => {
+                elem.onclick = () => {
+                    let getNextElements = Array.from(els).slice(inx + 1)
+                    getNextElements.forEach(el => el.style.background = 'red')
+                }
+            })
+        }
+    </script>
+</body>
+</html>
