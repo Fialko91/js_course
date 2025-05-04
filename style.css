@@ -90,3 +90,12 @@ p {
 .active {
     border-color: #00ff00;
 }
+
+.star{
+    background-color: rgba(232, 226, 226, 0.99);
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    box-shadow: 0 0 4px rgba(232, 226, 226, 0.99);
+}

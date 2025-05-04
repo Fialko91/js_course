@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 4</h1>
+<p>
+    Відображаємо картки товарів, які користувач може вибирати.
+    Вибраний товар має зелену рамку (при кліку робити toogle з класом вибраного елемента)
+</p>
+
+<img src="../../img/img_10.png" alt="">
+
+<p>Відповідь</p>
+<div id="container"></div>
+
+
+<script>
+    if (confirm('Почати тестування?')) {
+
+        const laptops = [
+            {
+                image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+                name: "Ноутбук Потужність X15",
+                price: 28999,
+                label: "новинка"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+                name: "Легкий Старт 14",
+                price: 19999,
+                label: "популярний"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=800&q=80",
+                name: "УльтраМакс Pro 17",
+                price: 37999,
+                label: "новинка"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+                name: "Бюджетний Мандрівник",
+                price: 14999,
+                label: "популярний"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=800&q=80",
+                name: "Ігрова Станція G9",
+                price: 42999,
+                label: "новинка"
+            }
+        ];
+
+        const renderPlace = document.getElementById('container')
+
+        class Card {
+            constructor(img, name, price, label) {
+                this.img = img
+                this.name = name
+                this.price = price
+                this.label = label
+            }
+
+            createElements() {
+                let el = document.createElement('div')
+                el.className = 'container-elem'
+
+                let img = document.createElement('img')
+                img.src = this.img
+                img.className = 'container-img'
+
+                let name = document.createElement('p')
+                name.innerText = this.name
+
+                let price = document.createElement('p')
+                price.innerText = this.price
+                price.className = 'container-price'
+
+                let label = document.createElement('span')
+                label.innerText = this.label
+
+                if (this.label === 'новинка') {
+                    label.classList.add('new')
+                } else {
+                    label.classList.add('popular')
+                }
+
+                label.classList.add('container-label')
+
+                el.append(img, name, price, label)
+
+                renderPlace.append(el)
+                return renderPlace
+            }
+
+            render() {
+                this.createElements()
+            }
+        }
+
+        function choseElement() {
+            const clickElements = document.querySelectorAll('.container-elem')
+
+            clickElements.forEach(el => {
+                el.onclick = () => el.classList.toggle('active')
+            })
+        }
+
+        for (let i = 0; i < laptops.length; i++) {
+            let { image, name, price, label } = laptops[i]
+
+            let prod = new Card(image, name, price, label)
+            prod.render()
+        }
+
+        choseElement()
+    }
+</script>
+</body>
+
+</html>
