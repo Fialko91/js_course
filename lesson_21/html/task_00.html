@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 00</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_00.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 00</h1>
+    <p>
+        Розробити клас Person (поля:ім'я, вік, адреса; методи: toString, визначення року народження).
+        На основі класу Person  розробити клас Worker (додати поля: посада, розмір заробітної плати, кількість відсотів оподаткування;
+        методи:визначення кількості виплачених коштів за рік, та визначення розміру податків)
+    </p>
+
+    <p>Відповідь</p>
+    <div id="result"></div>
+
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            class Person {
+                constructor(name, year, address) {
+                    this.name = name
+                    this.year = year
+                    this.address = address
+                }
+
+                toString() {
+                    return `Ім'я: ${this.name}, рік народження: ${new Date().getFullYear() - this.year}, адреса: ${this.address}`
+                }
+            }
+
+            class Worker extends Person{
+                constructor(name, year, address, position, salary, tax) {
+                    super(name, year, address);
+
+                    this.position = position
+                    this.salary = salary
+                    this.tax = tax
+                }
+
+                getTaxYear() {
+                    return 12*this.salary
+                }
+
+                getDeterminingAmountTax() {
+                    return this.getTaxYear() * (this.tax/100)
+                }
+
+                toString() {
+                    return `${super.toString()}, посада: ${this.position}, зарплата: ${this.salary}, річна зарплата: ${this.getTaxYear()}, податки за рік: ${this.getDeterminingAmountTax()}`
+                }
+            }
+
+            const person = new Worker('Дмитро', 1991, 'Cyprus', 'Developer', 5000, 20)
+            const result = document.getElementById('result')
+            result.innerText = person
+
+        }
+    </script>
+</body>
+</html>

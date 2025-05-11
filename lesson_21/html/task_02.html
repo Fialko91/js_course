@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 2</h1>
+<p>
+    Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції <br>
+    Вивести всіх простих клієнтів; <br>
+    Вивести всіх клієнтів GoldenClient; <br>
+    Знайти сумарну кількість грошей на рахунку;
+</p>
+
+<p>Відповідь</p>
+<div id="answer" ></div>
+
+<script>
+    if ( confirm('Почати тестування?') ) {
+        class Bank {
+            constructor(arrClients) {
+                this.arrClients = arrClients
+                this.searchResultSimple = []
+                this.searchResultGold = []
+                this.totalAmount = 0
+            }
+
+            getSimpleClients() {
+                this.arrClients.filter( el => {
+                    if ( el.type === 'Звичайний') this.searchResultSimple.push(el)
+                } )
+                return this.searchResultSimple
+            }
+
+            getGoldenClient() {
+                this.arrClients.filter( el => {
+                    if ( el.type === 'GoldenClient') this.searchResultGold.push(el)
+                } )
+                return this.searchResultGold
+            }
+
+            getTotalBalance() {
+                return this.totalAmount = this.arrClients.reduce((acc, el) => acc + el.balance, 0)
+            }
+
+            toString() {
+                return `Загальна кількість грошей на рахунку: ${this.totalAmount}, операції що до GoldenClient та Звичайний дивіться в консолі`
+            }
+        }
+
+        const clients = [
+            { name: "Іваненко Олександр", type: "GoldenClient", balance: 120000 },
+            { name: "Петренко Марія", type: "Звичайний", balance: 34000 },
+            { name: "Шевченко Андрій", type: "GoldenClient", balance: 175000 },
+            { name: "Коваль Наталія", type: "Звичайний", balance: 42000 },
+            { name: "Бондар Олег", type: "GoldenClient", balance: 132000 },
+            { name: "Мельник Ірина", type: "GoldenClient", balance: 27000 },
+            { name: "Ткаченко Дмитро", type: "GoldenClient", balance: 158000 },
+            { name: "Кузьменко Ольга", type: "Звичайний", balance: 39000 },
+            { name: "Литвин Юрій", type: "GoldenClient", balance: 145000 },
+            { name: "Сидоренко Анна", type: "Звичайний", balance: 31000 },
+            { name: "Гриценко Богдан", type: "GoldenClient", balance: 168000 },
+            { name: "Захарченко Катерина", type: "Звичайний", balance: 36000 },
+            { name: "Романенко Артем", type: "GoldenClient", balance: 149000 },
+            { name: "Левченко Тетяна", type: "Звичайний", balance: 28000 },
+            { name: "Семенюк Владислав", type: "GoldenClient", balance: 155000 },
+            { name: "Назаренко Оксана", type: "Звичайний", balance: 25000 },
+            { name: "Гончаренко Максим", type: "GoldenClient", balance: 140000 },
+            { name: "Дмитрук Аліна", type: "Звичайний", balance: 30000 },
+            { name: "Мазур Євген", type: "GoldenClient", balance: 162000 },
+            { name: "Чорна Вікторія", type: "Звичайний", balance: 37000 },
+            { name: "Лисенко Василь", type: "GoldenClient", balance: 157000 },
+            { name: "Федоренко Людмила", type: "Звичайний", balance: 33000 },
+            { name: "Павленко Віталій", type: "GoldenClient", balance: 148000 },
+            { name: "Юрченко Віра", type: "Звичайний", balance: 26000 },
+            { name: "Поляк Марія", type: "GoldenClient", balance: 153000 },
+            { name: "Гаврилюк Іван", type: "Звичайний", balance: 29000 },
+            { name: "Кравченко Володимир", type: "GoldenClient", balance: 160000 },
+            { name: "Кириленко Олена", type: "Звичайний", balance: 32000 },
+            { name: "Яковенко Сергій", type: "GoldenClient", balance: 150000 },
+            { name: "Савченко Дарина", type: "Звичайний", balance: 34000 }
+        ];
+
+        const simpleClients = new Bank(clients)
+        const clientsBank = document.getElementById('answer')
+
+        simpleClients.getTotalBalance()
+        clientsBank.innerText = simpleClients
+
+        console.log('Звичайний =>', simpleClients.getSimpleClients())
+        console.log('getGoldenClient =>', simpleClients.getGoldenClient())
+    }
+</script>
+</body>
+
+</html>

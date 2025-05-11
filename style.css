@@ -99,3 +99,12 @@ p {
     position: absolute;
     box-shadow: 0 0 4px rgba(232, 226, 226, 0.99);
 }
+
+.imageClass {
+    width: 80px;
+    aspect-ratio: 1;
+}
+
+.error {
+    color: red;
+}

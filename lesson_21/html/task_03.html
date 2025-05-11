@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 3</h1>
+<p>
+    Розробити Класи
+</p>
+<img src="../../img/img_13.png" alt="">
+
+<script>
+    if ( confirm('Почати тестування?') ) {
+
+        class MovingElement {
+            constructor(x, y, srcImg, interval) {
+                this.x = x
+                this.y = y
+                this.srcImg = srcImg
+                this.interval = interval
+                this.imgElement = null
+            }
+
+            render(selector) {
+                const img = document.createElement('img')
+                img.src = this.srcImg
+                img.className = 'imageClass'
+                img.style.top = this.y + 'px'
+                img.style.left = this.x + 'px'
+                this.imgElement = img
+
+                if(selector) {
+                    document.querySelector(selector).append(img)
+                }
+            }
+        }
+
+        class Dog extends MovingElement{
+            constructor(x, y, srcImg, interval){
+                super(x, y, srcImg.dog, interval)
+            }
+            update() {
+                const randX = -400 + Math.floor(Math.random() * 500)
+                this.imgElement.style.transform = `translateX(${randX}px)`
+            }
+
+            start(){
+                this.timer = setInterval(() => this.update(), this.interval)
+            }
+        }
+
+        class House extends MovingElement{
+            constructor(x, y, srcImg, interval){
+                super(x, y, srcImg.house, interval)
+            }
+            update(){
+                const randY = -200 + Math.floor(Math.random() * 500);
+                this.imgElement.style.transform = `translateY(${randY}px`
+            }
+
+            start(){
+                this.timer = setInterval(() => this.update(), this.interval)
+            }
+        }
+
+        class Bird extends MovingElement{
+            constructor(x, y, srcImg, interval){
+                super(x, y, srcImg.bird, interval)
+            }
+            update(){
+                const randX = -300 + Math.floor(Math.random() * 500);
+                const randY = -200 + Math.floor(Math.random() * 500);
+                this.imgElement.style.transform = `translate(${randX}px, ${randY}px`
+            }
+
+            start(){
+                this.timer = setInterval(() => this.update(), this.interval)
+            }
+        }
+
+        const srcImg = {
+            house: "../../img/house.jpg",
+            dog: "../../img/dog.jpg",
+            bird: "../../img/bird.jpg",
+        }
+
+        const dog = new Dog(200, 250, srcImg, 1000)
+        dog.render("body")
+        dog.start()
+
+        const bird = new Bird(350, 150,srcImg, 1250)
+        bird.render("body")
+        bird.start()
+
+        const house = new House(300, 100,srcImg, 750)
+        house.render("body")
+        house.start()
+    }
+</script>
+</body>
+
+</html>

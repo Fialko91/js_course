@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 01</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_01.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 1</h1>
+    <p>
+        Створити клас Client
+    </p>
+    <img src="../../img/img_12.png" alt="">
+
+    <p>Відповідь</p>
+    <div id="result"></div>
+    <div id="result2"></div>
+
+    <script>
+        if ( confirm('Почати тестування?') ) {
+            class Client {
+                constructor( fullName, balance ) {
+                    this.id = new Date().getTime()
+                    this.fullName = fullName
+                    this.balance = balance
+                }
+
+                deposit( depositAmount ){
+                    if( depositAmount > 0 ) return this.balance += depositAmount
+                }
+                withdrawal( numMoney ) {
+                    if ( numMoney <= this.balance ) {
+                        return this.balance -= numMoney
+                    } else throw new Error( "Недостатньо коштів" );
+                }
+
+                toString(){
+                    return `user id: ${ this.id }, ПІБ: ${ this.fullName }, Кількість грошей на рахунку: ${ this.balance }`
+                }
+            }
+
+            class GoldenClient extends Client {
+                constructor( fullName, balance, limit, percentage ) {
+                    super( fullName, balance )
+                    this.limit = limit
+                    this.percentage = percentage
+                    this.creditMoney = 0
+                }
+
+                withdrawal( withdrawalAmount ) {
+                    if( withdrawalAmount > (this.balance + this.limit) ) throw new Error( "Недостатньо коштів" )
+                    else{
+                        if ( withdrawalAmount <= this.balance ) {
+                            this.balance -= withdrawalAmount
+                        } else {
+                            this.creditMoney = withdrawalAmount - this.balance
+                            this.balance = 0
+                        }
+                    }
+                    return this.balance
+                }
+
+                getPenalty(){
+                    return this.creditMoney * ( this.percentage/100 )
+                }
+
+                toString() {
+                    return `${ super.toString() }, Ліміт кредиту: ${ this.limit }, Відсоток кредиту: ${ this.percentage }%`;
+                }
+            }
+
+            const client1 = new GoldenClient("Dmytro", 20000, 5000, 3)
+            const client2 = new GoldenClient('Alex', 15000, 10000, 5)
+
+            client1.deposit(10000)
+            client2.deposit(3000)
+            client1.withdrawal(5000)
+            client2.withdrawal(1000)
+
+            const container = document.getElementById('result')
+            const container2 = document.getElementById('result2')
+
+            container.innerText = client1
+            container2.innerText = client2
+        }
+    </script>
+
+</body>
+</html>

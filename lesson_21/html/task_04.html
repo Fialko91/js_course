@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 4</h1>
+<p>
+    Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку (перевіряти чи є числом, чи від 1 до 100).
+    Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не останній місяць у семестрі).
+    Обробку усіх помилок зробити з використанням відповідних класів.
+</p>
+
+<p>Відповідь</p>
+<div id="result"></div>
+
+
+<script>
+    if ( true ) {
+        class IsNotNumberError extends Error {
+            constructor() {
+                super("Введені значення мають бути числами");
+                this.name = "IsNotNumberError";
+            }
+        }
+
+        class IsNotCurrent extends Error {
+            constructor() {
+                super("Ви ввели некоректне число");
+                this.name = "IsNotCurrent";
+            }
+        }
+        
+        class StudentCheckUp {
+            constructor(month, rating) {
+                this.month = month
+                this.rating = rating
+                this.vacation = false
+                this.ratingResult = false
+            }
+
+            checkUpMonth() {
+                if (this.month <= 6 || this.month >= 9)
+                    return this.vacation = true
+                else this.vacation = false
+            }
+
+            checkUpRating() {
+                if (this.rating <= 50 || this.rating > 50)
+                    return this.ratingResult = true
+                else this.ratingResult = false
+            }
+
+            render() {
+                const res = document.getElementById('result')
+                const el = document.createElement('p')
+                const el2 = document.createElement('p')
+                res.append(el)
+                res.append(el2)
+
+                if (this.checkUpMonth())
+                    el.innerText = `Зараз не канікули`
+                else el.innerText = `Зараз вже канікули`
+
+                if (this.checkUpRating())
+                    el2.innerText = `Учень може виправити оцінку`
+                else el2.innerText = `Оцінка хороша, виправляти не потрібно`
+            }
+        }
+
+        const getMonth = parseInt(prompt('Введіть місяць навчання'))
+        const getRating = parseInt(prompt('Введіть оцінку учня'))
+
+        try{
+            if(getRating > 100 ) throw new IsNotCurrent()
+            if(getRating< 1) throw new IsNotCurrent()
+            if(isNaN(getRating)) throw new IsNotNumberError()
+        } catch(err) {
+            hasError = true
+            const res = document.getElementById('result')
+            const error = document.createElement('p')
+            error.className = 'error'
+            res.append(error)
+
+            if(err instanceof IsNotCurrent ) {
+                error.innerText = err.message
+                console.log(err.message)
+            }
+            if(err instanceof IsNotNumberError){
+                error.innerText = err.message
+                console.log(err.message)
+            }
+        }
+
+        try{
+            if(getMonth > 12 ) throw new IsNotCurrent()
+            if(getMonth< 1) throw new IsNotCurrent()
+            if(isNaN(getMonth)) throw new IsNotNumberError()
+        } catch(err) {
+            hasError = true
+            const res = document.getElementById('result')
+            const error = document.createElement('p')
+            error.className = 'error'
+            res.append(error)
+
+            if(err instanceof IsNotCurrent ) {
+                error.innerText = err.message
+                console.log(err.message)
+            }
+            if(err instanceof IsNotNumberError){
+                error.innerText = err.message
+                console.log(err.message)
+            }
+        }
+
+        const student1 = new StudentCheckUp(getMonth, getRating)
+        student1.render()
+
+    }
+</script>
+</body>
+
+</html>
