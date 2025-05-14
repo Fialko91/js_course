@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 01</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_01.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 1</h1>
+    <h2>Задачу зробив так, якщо юзер вводе сам якісь задачі</h2>
+    <p>
+        Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage).
+        Періодично випадковим чином вибирати якусь з справ і виводити користувачу (з використанням confirm).
+        Якщо користувач натискає на «Ок», то видаляти цю задачу.
+    </p>
+
+    <input id="input">
+    <button id="btn">add to do</button>
+    <p>Відповідь</p>
+    <ul class="todo-list"></ul>
+
+    <script>
+        if ( confirm('Почати тестування?') ) {
+            const todo = document.querySelector('.todo-list')
+            const input = document.getElementById('input')
+            const btn = document.getElementById('btn')
+            const toDoList = []
+            const LS = window.localStorage
+
+            let retString = localStorage.getItem("toDoList")
+            let retArray = JSON.parse(retString)
+
+            if (!input.value.length)
+                btn.disabled = true
+
+            input.addEventListener('input', () => {
+                if (!input.value.length)
+                    btn.disabled = true
+                else btn.disabled = false
+            })
+
+            function addToDoList() {
+                const li = document.createElement('li')
+                li.className = 'to-do-el'
+                const delBtn = document.createElement('button')
+                delBtn.className = 'remove'
+
+                li.innerText = input.value
+                delBtn.innerText = 'ok'
+
+                todo.append(li)
+                li.append(delBtn)
+
+                toDoList.push(input.value)
+
+                let string = JSON.stringify(toDoList)
+                LS.setItem('toDoList', string)
+
+                clearInput()
+                if (!input.value.length)
+                    btn.disabled = true
+            }
+
+            function renderList() {
+                for (let i = 0; i < retArray.length; i++) {
+                    const li = document.createElement('li')
+                    li.className = 'to-do-el'
+                    const delBtn = document.createElement('button')
+                    delBtn.className = 'remove'
+
+                    li.innerText = retArray[i]
+                    delBtn.innerText = 'ok'
+
+                    todo.append(li)
+                    li.append(delBtn)
+                }
+
+                toDoList.push(...retArray)
+            }
+
+            renderList()
+
+            const removeElements = document.querySelectorAll('.remove')
+
+            removeElements.forEach((el, ind) => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault()
+                    e.target.parentElement.remove()
+
+                    retArray.splice(ind, 1)
+
+                    let string = JSON.stringify(retArray)
+                    LS.setItem('toDoList', string)
+                })
+            })
+
+            function clearInput() {
+                input.value = ''
+            }
+
+            btn.addEventListener('click', addToDoList)
+        }
+    </script>
+
+</body>
+</html>

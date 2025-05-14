@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_02.js"></script>
+</head>
+<body>
+
+<a href="../index.html">Home page</a>
+
+<h1>Завдання 2</h1>
+<p>
+    Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage).
+    Періодично випадковим чином вибирати якусь з справ і виводити користувачу (з використанням confirm).
+    Якщо користувач натискає на «Ок», то видаляти цю задачу.
+</p>
+
+<p>Відповідь</p>
+
+<script>
+    if ( confirm('Почати тестування?') ) {
+        class ToDo {
+            constructor(list){
+                this.toDolist = JSON.parse(JSON.stringify(list))
+                this.LS = window.localStorage
+                this.LS.setItem('toDoList',JSON.stringify(this.toDolist))
+            }
+
+            getRandomIndex(min, max) {
+                return min + Math.floor(Math.random() * (max - min + 1))
+            }
+
+            setTimeout(cb){
+                const callTimeout = () => {
+                    const list = JSON.parse(this.LS.getItem('toDoList'))
+                    console.log(list)
+
+                    if (list.length === 0) {
+                        alert("Усі задачі виконано");
+                        return;
+                    }
+                    setTimeout(() => {
+                        cb()
+                        callTimeout()
+                    }, 1500);
+                }
+
+                callTimeout()
+            }
+
+            showToUser(){
+                const list = JSON.parse(this.LS.getItem('toDoList'))
+                const getRandomToDoIndex = this.getRandomIndex(0, list.length - 1)
+
+                if( confirm(list[getRandomToDoIndex]) ) {
+                    list.splice(getRandomToDoIndex, 1)
+                    this.LS.setItem('toDoList', JSON.stringify(list))
+                } else this.showToUser()
+            }
+
+            start(){
+                this.setTimeout(this.showToUser.bind(this))
+            }
+        }
+
+        const toDoList = [
+            "Прочитати розділ з підручника",
+            "Написати код для домашнього завдання",
+            "Сходити до магазину",
+            "Прибрати на робочому столі",
+            "Подзвонити бабусі",
+            "Підготувати презентацію",
+            "Піти на прогулянку",
+            "Зробити резервну копію даних",
+        ];
+
+        const userToDoList = new ToDo(toDoList)
+        userToDoList.start()
+    }
+</script>
+</body>
+
+</html>

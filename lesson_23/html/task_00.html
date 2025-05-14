@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 00</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_00.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 00</h1>
+    <p>
+        Користувач може змінювати колір фону, що вибирає користувач з використанням <br>
+        input type="color".
+        Зберігати цей колір і відновлювати при наступному відкритті.
+        Також зберігати і відображати кількість змін протягом одного сеансу.
+
+    </p>
+
+    <input type="color" id="input">
+
+    <p>Відповідь</p>
+    <div id="result"></div>
+
+
+    <script>
+        if (confirm('Почати тестування?')) {
+            const input = document.getElementById('input')
+            const result = document.getElementById('result')
+            const body = document.querySelector('body')
+            const LS = window.localStorage;
+            let count = 0
+
+            input.addEventListener('input', () => {
+                count++
+                LS.setItem('color', input.value)
+                LS.setItem('count', count )
+                body.style.backgroundColor = input.value
+                result.innerText = LS.getItem('count')
+            })
+
+            window.onload = () => {
+                body.style.backgroundColor = LS.getItem('color')
+                result.innerText = LS.getItem('count')
+            }
+        }
+    </script>
+</body>
+</html>
