@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 00</title>
+    <link href="../../style.css" rel="stylesheet">
+    <script defer src="./../scripts/task_00.js"></script>
+</head>
+<body>
+    <a href="../index.html">Home page</a>
+
+    <h1>Завдання 00</h1>
+    <p>
+        Використовуючи один з АРІ
+        <a href="https://github.com/public-apis/public-apis#animals">https://github.com/public-apis/public-apis#animals</a>
+        та функцію fetch організувати завантаження та відображення даних
+        Намагайтесь зробити це з використанням класів. Окремо клас для побудови розмітки. Окремо клас, який буде робити запити і повертати результати.
+    </p>
+
+
+    <p>Відповідь</p>
+    <div id="result"></div>
+
+    <script>
+        if ( confirm('Почати тестування?') ) {
+
+            class AnimalCard {
+                constructor(src) {
+                    this.src = src
+                }
+
+                render(select) {
+                    const img = document.createElement('img')
+                    img.src = this.src
+                    img.className = 'animal-card'
+
+                    if (select)
+                        select.append(img)
+                    else alert("Такого select не існує")
+                }
+
+            }
+
+            class Fetch {
+                constructor(url, select) {
+                    this.url = url
+                    this.select = select
+                }
+
+                async getData() {
+                    try {
+                        const res = await fetch(this.url)
+
+                        if (!res.ok) throw new Error("Помилка з сервером");
+
+                        const obj = await res.json();
+
+                        new AnimalCard(obj.message).render(this.select);
+
+                    } catch (err) {
+                        console.log(err)
+                    }
+                }
+            }
+
+            const res = document.getElementById('result')
+            const url = "https://dog.ceo/api/breeds/image/random"
+            const card = new Fetch(url, res)
+
+            card.getData()
+
+
+        }
+    </script>
+</body>
+</html>

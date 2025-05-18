@@ -108,3 +108,9 @@ p {
 .error {
     color: red;
 }
+
+.animal-card {
+    aspect-ratio: 1;
+    width: 300px;
+    object-fit: cover;
+}
